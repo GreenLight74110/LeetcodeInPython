@@ -9,10 +9,10 @@
 #               5
 #              / \
 #             4   8
-#            /   / \
-#           11  13  4
-#          /  \      \
-#         7    2      1
+#            /
+#           11
+#             \
+#              2
 # return true, as there exist a root-to-leaf path 5->4->11->2 which sum is 22.
 #
 
@@ -22,6 +22,22 @@ class TreeNode:
         self.val = x
         self.left = None
         self.right = None
+
+class Solution2(object):
+    def hasPathSum(self, root, sum):
+        """
+        :type root: TreeNode
+        :type sum: int
+        :rtype: bool
+        """
+        if root is None:
+            return False
+
+        if root.left is None and root.right is None and root.val == sum:
+            return True
+
+        return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - root.val)
+
 
 class Solution:
     # @param root, a tree node
@@ -42,4 +58,4 @@ if __name__ == "__main__":
     root.right = TreeNode(8)
     root.left.left = TreeNode(11)
     root.left.left.right = TreeNode(2)
-    print Solution().hasPathSum(root, 22)
+    print Solution2().hasPathSum(root, 22)
