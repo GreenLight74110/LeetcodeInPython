@@ -26,30 +26,28 @@ class TreeNode:
 
 
 class Solution2:
-    # @param root, a tree node
-    # @return a list of lists of integers
     def zigzagLevelOrder(self, root):
         if root is None:
             return []
-
-        result, current = [], [root]
+        result = []
+        current = [root]
+        level = 1
         while current:
-            vals = []
             next_level = []
+            vals = []
             for node in current:
                 vals.append(node.val)
-                if node.left:
+                if node.left is not None:
                     next_level.append(node.left)
-                if node.right:
+                if node.right is not None:
                     next_level.append(node.right)
-            if result.__len__() % 2 == 0:
+            current = next_level
+            if level % 2 == 1:
                 result.append(vals)
             else:
                 result.append(vals[::-1])
-            current = next_level
-
+            level += 1
         return result
-
 
 class Solution:
     # @param root, a tree node
@@ -81,5 +79,5 @@ if __name__ == "__main__":
     root.right = TreeNode(20)
     root.right.left = TreeNode(15)
     root.right.right = TreeNode(7)
-    result = Solution().zigzagLevelOrder(root)
+    result = Solution2().zigzagLevelOrder(root)
     print result
