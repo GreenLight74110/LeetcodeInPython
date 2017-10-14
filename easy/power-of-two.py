@@ -1,13 +1,8 @@
-# coding=utf-8
-
 # Time:  O(1)
 # Space: O(1)
 #
 # Given an integer, write a function to determine if it is a power of two.
 
-# 如果一个数n是2的平方，那它的形式一定是1000....
-# n-1则为0111....
-# 所以n & n-1就是00000....
 
 class Solution:
     # @param {integer} n
@@ -22,5 +17,16 @@ class Solution2:
     def isPowerOfTwo(self, n):
         return n > 0 and (n & ~-n) == 0
 
-print 12
-print ~-12
+
+class Solution3:
+    # @param {integer} n
+    # @return {boolean}
+    def isPowerOfTwo(self, n):
+        if n <= 0:
+            return False
+        else:
+            result = 0
+            for i in xrange(n):
+                result += (n & 1)
+                n >>= 1
+            return result == 1
