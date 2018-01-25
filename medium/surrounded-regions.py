@@ -60,4 +60,4 @@ if __name__ == "__main__":
              ['X', 'X', 'O', 'X'],
              ['X', 'O', 'X', 'X']]
     Solution().solve(board)
-    print board
+    print(board)

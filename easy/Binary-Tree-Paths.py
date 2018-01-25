@@ -81,4 +81,4 @@ if __name__ == "__main__":
     root.right.right.left = TreeNode(5)
     root.right.right.right = TreeNode(1)
 
-    print Solution().binaryTreePaths(root)
+    print(Solution().binaryTreePaths(root))

@@ -14,11 +14,11 @@ class Solution5(object):
         A = sorted(A)
         for i in range(1,len(A)-1,3):
             if A[i] != A[i+1] and A[i] != A[i-1]:
-                print A[i]
+                print(A[i])
             elif A[i] == A[i+1] and A[i] != A[i-1]:
-                print A[i-1]
+                print(A[i-1])
             elif A[i] != A[i + 1] and A[i] == A[i - 1]:
-                print A[i+1]
+                print(A[i+1])
             # print i
 
 class Solution(object):
@@ -74,4 +74,4 @@ class SolutionEX(object):
         return two
 
 if __name__ == "__main__":
-    print Solution5().singleNumber([1, 1, 1, 2, 2, 2, 3])
+    print(Solution5().singleNumber([1, 1, 1, 2, 2, 2, 3]))

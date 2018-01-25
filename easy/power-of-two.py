@@ -26,7 +26,7 @@ class Solution3:
             return False
         else:
             result = 0
-            for i in xrange(n):
+            for i in range(n):
                 result += (n & 1)
                 n >>= 1
             return result == 1

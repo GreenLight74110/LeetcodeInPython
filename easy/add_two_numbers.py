@@ -83,4 +83,4 @@ if __name__ == '__main__':
     a, a.next, a.next.next = ListNode(2), ListNode(4), ListNode(3)
     b, b.next, b.next.next = ListNode(5), ListNode(6), ListNode(7)
     result = Solution2().addTwoNumbers(a, b)
-    print "{0} -> {1} -> {2}".format(result.val, result.next.val, result.next.next.val)
+    print("{0} -> {1} -> {2}".format(result.val, result.next.val, result.next.next.val))

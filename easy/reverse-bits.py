@@ -31,4 +31,4 @@ class Solution:
         return int(string, 2)
 
 if __name__ == '__main__':
-    print Solution().reverseBits(1)
+    print(Solution().reverseBits(1))

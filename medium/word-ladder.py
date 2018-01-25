@@ -37,7 +37,7 @@ class Solution2:
             for word in cur:
                 if word == end:
                     return lad_len + 1
-                for i in xrange(len(word)):
+                for i in range(len(word)):
                     for j in "abcdefghijklmnopqrstuvwxyz":
                         candidate = word[:i] + j + word[i + 1:]
                         if candidate not in visited and candidate in word_list:
@@ -62,7 +62,7 @@ class Solution:
             for word in cur:
                 if word == end:
                     return distance + 1
-                for i in xrange(len(word)):
+                for i in range(len(word)):
                     for j in 'abcdefghijklmnopqrstuvwxyz':
                         candidate = word[:i] + j + word[i + 1:]
                         if candidate not in visited and candidate in word_list:
@@ -75,7 +75,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    print Solution().ladderLength("hit", "cog", set(["hot", "dot", "dog", "lot", "log"]))
-    print Solution().ladderLength("hit", "cog", set(["hot", "dot", "dog", "lot", "log", "cog"]))
-    print Solution2().ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])
-    print Solution2().ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log"])
+    print(Solution().ladderLength("hit", "cog", set(["hot", "dot", "dog", "lot", "log"])))
+    print(Solution().ladderLength("hit", "cog", set(["hot", "dot", "dog", "lot", "log", "cog"])))
+    print(Solution2().ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
+    print(Solution2().ladderLength("hit", "cog", ["hot", "dot", "dog", "lot", "log"]))

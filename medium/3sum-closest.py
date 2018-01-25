@@ -66,4 +66,4 @@ class Solution(object):
 
 if __name__ == '__main__':
     result = Solution2().threeSumClosest([-1, 2, 1, -4], 1)
-    print result
+    print(result)

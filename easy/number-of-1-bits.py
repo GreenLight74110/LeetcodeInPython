@@ -31,4 +31,4 @@ class Solution:
         return result
 
 if __name__ == '__main__':
-    print Solution2().hammingWeight(11)
+    print(Solution2().hammingWeight(11))

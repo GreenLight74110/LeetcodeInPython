@@ -58,4 +58,4 @@ if __name__ == "__main__":
     root.right = TreeNode(8)
     root.left.left = TreeNode(11)
     root.left.left.right = TreeNode(2)
-    print Solution2().hasPathSum(root, 22)
+    print(Solution2().hasPathSum(root, 22))

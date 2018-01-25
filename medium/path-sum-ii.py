@@ -61,4 +61,4 @@ if __name__ == "__main__":
     root.right.right.left = TreeNode(5)
     root.right.right.left = TreeNode(1)
 
-    print Solution().pathSum(root, 22)
+    print(Solution().pathSum(root, 22))

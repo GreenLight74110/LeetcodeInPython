@@ -26,4 +26,4 @@ class Solution:
         return reduce(operator.xor, A)
 
 if __name__ == '__main__':
-    print Solution2().singleNumber([1, 1, 2, 2, 3])
+    print(Solution2().singleNumber([1, 1, 2, 2, 3]))
