@@ -6,8 +6,20 @@ class Sort(object):
         nums[j] = nums[i]
         nums[i] = temp
 
+    def merge_sorted(self, nums1, m, nums2, n):
+        i, j, k = m - 1, n - 1, m + n - 1
+        while k >= 0:
+            if i < 0:
+                nums1[k], j = nums2[j], j - 1
+            elif j < 0: # j<0 说明此时已经比完了
+                break
+            elif nums1[i] > nums2[j]:
+                nums1[k], i = nums1[i], i - 1
+            else:
+                nums1[k], j = nums2[j], j - 1
+            k -= 1
+
     def merge(self, nums, lo, mid, hi):
-        # self.temp_nums = []
         i, j = lo, mid + 1
 
         for k in range(lo, hi + 1):
@@ -45,6 +57,35 @@ class Sort(object):
                 self.merge(nums, lo, lo + sz - 1, min(lo + sz + sz, len(nums)) - 1)
                 lo += sz + sz
             sz += sz
+
+    def bucket_sort(self, nums):
+        max_val, min_val = max(nums), min(nums)
+        bucket_range = (int)((max_val - min_val - 1) / (len(nums) - 1)) + 1
+        bucket_size = (int)((max_val - min_val) / bucket_range) + 1
+        buckets = [None] * bucket_size
+
+        for num in nums: # 现将各个元素放入桶中
+            idx = (int)((num - min_val) / bucket_range)
+            if buckets[idx] is None:
+                buckets[idx] = [num]
+            else:
+                buckets[idx].append(num)
+
+        num_len = 0
+        for i in range(bucket_size): # 对桶里的元素先排序，然后再merge
+            if buckets[i] is None:
+                continue
+            for j in range(1, len(buckets[i])):
+                temp = buckets[i][j]
+                for k in range(j, 0, -1):
+                    if buckets[i][k - 1] > temp:
+                        self.exchange(buckets[i], k - 1, k)
+                    else:
+                        buckets[i][k] = temp
+                        break
+            self.merge_sorted(nums, num_len, buckets[i], len(buckets[i]))
+            num_len += len(buckets[i])
+        return nums
 
     def selectSort(self, nums):  # 降序
         for i in range(0, len(nums)):
@@ -135,7 +176,7 @@ class Sort(object):
 
 
 if __name__ == '__main__':
-    nums = [4, 4, 3, 4, 2, 4, 2, 3, 5, 3]
+    nums = [4, 14, 23, 4, 2, 64, 21, 3, 35, 3]
     print(nums)
     # Sort().selectSort(nums)
     # Sort().insertSort(nums)
@@ -143,7 +184,9 @@ if __name__ == '__main__':
     # Sort().quickSort(nums, 0, len(nums) - 1)
     # print(nums)
     # Sort().quickSort_plus(nums, 0, len(nums) - 1)
-    Sort().merge_sort_BU(nums)
-    print(nums)
-    Sort().merge_sort_UB(nums)
+    # Sort().merge_sort_BU(nums)
+    # print(nums)
+    # Sort().merge_sort_UB(nums)
+    # print(nums)
+    Sort().bucket_sort(nums)
     print(nums)
